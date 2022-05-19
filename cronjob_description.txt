@@ -1,8 +1,0 @@
-Set up cronjob:
-
-see all cronjob: cronjob -l
-edit cronjob: cronjob -e
-
-create cronjob command: https://www.bennetrichter.de/tools/crontab-generator/
-
-our cronjob command: */2 * * * * /home/jonas_pieper/my_env/bin/python /home/jonas_pieper/project/api_call/call_api.py > /dev/null 2>&1
