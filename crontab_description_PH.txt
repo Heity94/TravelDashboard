@@ -4,4 +4,4 @@ see all crontab: crontab -l
 edit cronjob: crontab -e
 
 our crontab command:
- */2 * * * * /home/jonas_pieper/my_env/bin/python /home/jonas_pieper/project/api_call/call_api.py > /dev/null 2>&1
+ */2 * * * * /home/philipp_heitmann/venv_bigdata/bin/python /home/philipp_heitmann/TravelDashboard/scripts/TravelDashboard-run > /dev/null 2>&1

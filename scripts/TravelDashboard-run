@@ -38,7 +38,7 @@ def call_flight_api(path, opensky_DB, seat_data, aircraftregister_US):
 
 if __name__ == "__main__":
     #Set path to store data
-    path = "raw_data/test_PH/"
+    path = "raw_data/preproc_data_test/"
 
     # Load required databases for matching/ preprocessing
     seat_data = pd.read_csv("TravelDashboard/data/seats_p_aircraft_final.csv",
