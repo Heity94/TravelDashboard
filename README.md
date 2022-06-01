@@ -72,3 +72,12 @@ mkdir tmp
 cd tmp
 TravelDashboard-run
 ```
+
+Download und unzip required .csv data and store in data folder
+```bash
+curl https://opensky-network.org/datasets/metadata/aircraftDatabase.csv > TravelDashboard/data/OpenSky_AircraftDatabase.csv
+curl https://registry.faa.gov/database/ReleasableAircraft.zip > TravelDashboard/data/US_ReleasableAircraft.zip
+cd TravelDashboard/data
+unzip US_ReleasableAircraft.zip -d US_ReleasableAircraft/
+rm US_ReleasableAircraft.zip
+```

@@ -8,6 +8,7 @@ wheel>=0.29
 numpy
 pandas
 scikit-learn
+reverse_geocoder
 
 # tests/linter
 black
@@ -17,6 +18,7 @@ black
 #yapf
 
 # API
+requests
 #gcsfs
 #google-cloud-storage
 #mlflow
