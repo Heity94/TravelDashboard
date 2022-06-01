@@ -2,6 +2,55 @@ import pandas as pd
 import numpy as np
 import reverse_geocoder
 import requests
+import os
+
+def get_data():
+
+    print("Load local databases ...")
+    # Load required databases for matching/ preprocessing
+    seat_data = pd.read_csv(os.path.join(os.path.dirname(__file__),"data","seats_p_aircraft_final.csv"),
+                            index_col=0)
+
+    #seat_data = pd.read_csv("TravelDashboard/data/seats_p_aircraft_final.csv",
+    #                        index_col=0)
+    aircraftregister_US = pd.read_csv(os.path.join(
+        os.path.dirname(__file__), "data",
+        "US_ReleasableAircraftRegister.csv"),
+                                      index_col=0,
+                                      low_memory=False)
+    opensky_DB = pd.read_csv(os.path.join(
+        os.path.dirname(__file__), "data",
+        "OpenSky_AircraftDatabase.csv"))
+
+    #Call OpenSky API to receive current status of all aircrafts
+    print("Call OpenSky API ...")
+    response = requests.get(
+        "https://opensky-network.org/api/states/all").json()
+
+    # Define column names for dataframe
+    col_names = [
+        'icao24', 'callsign', 'origin_country', 'time_position',
+        'last_contact', 'long', 'lat', 'baro_altitude', 'on_ground',
+        'velocity', 'true_track', 'vertical_rate', 'sensors', 'geo_altitude',
+        'squawk', 'spi', 'position_source', "drop"
+    ]
+
+    # Create Dataframe
+    flights = pd.DataFrame(response["states"], columns=col_names)
+    flights['time'] = response[
+        'time']  #add time column and set to time of API call
+
+    # Drop columns & rows which are not required
+    flights.drop(columns=[
+        "time_position", "last_contact", "sensors", "squawk", "spi",
+        "position_source", "drop"
+    ],
+                 inplace=True)  # drop columns
+    flights.dropna(
+        subset=['lat', "long", "icao24"], inplace=True
+    )  #drop rows where lat or long or icao24 is NaN -> can not be used for further processing
+
+    return flights, opensky_DB, seat_data, aircraftregister_US, response
 
 def filter_passenger_carriers(flights_df):
     '''Filter out aircrafts from carriers which do not transport passengers'''
@@ -190,6 +239,7 @@ def rev_geocode(pflights_df):
 def preproc_flight_data(flights_df, opensky_DB, seat_data, aircraftregister_US):
     '''Preprocess flight data from OpenSky API'''
 
+    print("Start preprocessing ...")
     print("Shape before filter_passenger_carriers:", flights_df.shape)
     pflights_df = filter_passenger_carriers(flights_df)
 
@@ -211,39 +261,29 @@ def preproc_flight_data(flights_df, opensky_DB, seat_data, aircraftregister_US):
     print("Shape before rev_geocode:", pflights_df.shape)
     pflights_df = rev_geocode(pflights_df)
 
+    print("Preprocessing finished")
+
     return pflights_df
+
+def save_processed_data(pflights_df, response):
+
+    #Set path to store data
+    path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "raw_data",
+                        "preproc_data_test", f"{response['time']}.csv")
+    #path = "raw_data/preproc_data_test/"
+
+    # Store preprocessed DataFrame to csv
+    pflights_df.to_csv(path)
+    print(f'''Final DataFrame stored as .csv under {path}{response['time']}.csv''')
 
 
 if __name__ == "__main__":
 
-    path = "../raw_data/test_PH/"
-
-    #Call OpenSky API to receive current status of all aircrafts
-    print("Call OpenSky API ...")
-    response = requests.get("https://opensky-network.org/api/states/all").json()
-
-    # Define column names for dataframe
-    col_names=['icao24','callsign','origin_country','time_position','last_contact','long','lat','baro_altitude','on_ground','velocity',
-    'true_track','vertical_rate','sensors','geo_altitude','squawk','spi','position_source', "drop"]
-
-    # Create Dataframe
-    flights = pd.DataFrame(response["states"], columns=col_names)
-    flights['time'] = response['time'] #add time column and set to time of API call
-
-    # Drop columns & rows which are not required
-    flights.drop(columns=["time_position", "last_contact", "sensors", "squawk", "spi", "position_source", "drop"], inplace=True) # drop columns
-    flights.dropna(subset=['lat', "long", "icao24"], inplace=True) #drop rows where lat or long or icao24 is NaN -> can not be used for further processing
-
-    # Load required databases for matching/ preprocessing
-    seat_data = pd.read_csv("data/seats_p_aircraft_final.csv", index_col=0)
-    aircraftregister_US = pd.read_csv("data/US_ReleasableAircraftRegister.csv", index_col=0, low_memory=False)
-    opensky_DB = pd.read_csv("data/OpenSky_AircraftDatabase.csv")
+    #Load data
+    flights, opensky_DB, seat_data, aircraftregister_US, response = get_data()
 
     # Preprocess flight data
-    print("Start preprocessing ...")
     pflights_df_final = preproc_flight_data(flights, opensky_DB, seat_data, aircraftregister_US)
-    print("Preprocessing finished")
 
     # Store preprocessed DataFrame to csv
-    pflights_df_final.to_csv(path+f"{response['time']}.csv")
-    print(f'''Final DataFrame stored as .csv under {path}{response['time']}.csv''')
+    save_processed_data(pflights_df_final, response)
