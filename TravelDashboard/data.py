@@ -271,8 +271,6 @@ def save_processed_data(pflights_df, response):
     path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "raw_data",
                         "preproc_data_test", f"{response['time']}.csv")
     #path = "raw_data/preproc_data_test/"
-    print(os.path.abspath(__file__))
-    print(path)
 
     # Store preprocessed DataFrame to csv
     pflights_df.to_csv(path)

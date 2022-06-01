@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests
-import pandas as pd
-import numpy as np
 from TravelDashboard.data import preproc_flight_data, get_data, save_processed_data
 
 
 
 if __name__ == "__main__":
+
     #Load data
     flights, opensky_DB, seat_data, aircraftregister_US, response = get_data()
 
