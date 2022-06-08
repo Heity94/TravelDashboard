@@ -37,15 +37,32 @@ def get_data():
 
     # Create Dataframe
     flights = pd.DataFrame(response["states"], columns=col_names)
-    flights['time'] = response[
-        'time']  #add time column and set to time of API call
 
-    # Drop columns & rows which are not required
-    flights.drop(columns=[
+    print("Number of columns received from API:", flights.shape[1])
+
+    #Sometimes the response has 17 and sometimes it has 18 columns!
+    if flights.shape[1]==18:
+        flights.columns=col_names
+        # Drop columns & rows which are not required
+        flights.drop(columns=[
         "time_position", "last_contact", "sensors", "squawk", "spi",
         "position_source", "drop"
-    ],
-                 inplace=True)  # drop columns
+        ], inplace=True)  # drop columns
+    else:
+        flights.columns=col_names = [
+        'icao24', 'callsign', 'origin_country', 'time_position',
+        'last_contact', 'long', 'lat', 'baro_altitude', 'on_ground',
+        'velocity', 'true_track', 'vertical_rate', 'sensors', 'geo_altitude',
+        'squawk', 'spi', 'position_source']
+
+        flights.drop(columns=[
+        "time_position", "last_contact", "sensors", "squawk", "spi",
+        "position_source"], inplace=True)  # drop columns
+
+    flights['time'] = response['time']  #add time column and set to time of API call
+
+    # Drop columns & rows which are not required
+
     flights.dropna(
         subset=['lat', "long", "icao24"], inplace=True
     )  #drop rows where lat or long or icao24 is NaN -> can not be used for further processing
@@ -269,12 +286,12 @@ def save_processed_data(pflights_df, response):
 
     #Set path to store data
     path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "raw_data",
-                        "preproc_data_test", f"{response['time']}.csv")
+                        "preproc_data_test", "{}.csv".format(response['time']))
     #path = "raw_data/preproc_data_test/"
 
     # Store preprocessed DataFrame to csv
     pflights_df.to_csv(path)
-    print(f'''Final DataFrame stored as .csv under {path}''')
+    print('Final DataFrame stored as .csv under {}'.format(path))
 
 
 if __name__ == "__main__":
