@@ -286,7 +286,7 @@ def save_processed_data(pflights_df, response):
 
     #Set path to store data
     path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "raw_data",
-                        "preproc_data_test", "{}.csv".format(response['time']))
+                        "preproc_data", "{}.csv".format(response['time']))
     #path = "raw_data/preproc_data_test/"
 
     # Store preprocessed DataFrame to csv
