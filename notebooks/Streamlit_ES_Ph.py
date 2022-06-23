@@ -10,6 +10,8 @@ import glob
 import folium
 import json
 from ast import literal_eval
+import datetime
+
 
 # Set page configuration to wide mode
 st.set_page_config(layout="wide")
@@ -26,6 +28,13 @@ geojson = json.load(open("../raw_data/countries.geojson"))
 
 # show data table
 #st.write(df)
+
+# select start and end date
+start_date = st.sidebar.date_input('Select your start date:', datetime.date(2022,6,1))
+st.write(start_date)
+
+end_date = st.sidebar.date_input('Select your end date:', datetime.date(2022,6,2))
+st.write(end_date)
 
 #for changing type of the maps
 add_select = st.sidebar.selectbox("What map style do you want?",('open-street-map', 'white-bg', 'carto-positron', 'carto-darkmatter', 'stamen- terrain', 'stamen-toner', 'stamen-watercolor'))
