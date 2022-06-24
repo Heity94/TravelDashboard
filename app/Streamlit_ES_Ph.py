@@ -1,15 +1,8 @@
 import pandas as pd
-import folium
-from folium.features import GeoJsonPopup, GeoJsonTooltip
 import streamlit as st
-from streamlit_folium import folium_static
 import plotly.express as px
-import numpy as np
-import os
-import glob
-import folium
 import json
-from ast import literal_eval
+
 
 # Set page configuration to wide mode
 st.set_page_config(layout="wide")
