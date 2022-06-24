@@ -294,6 +294,31 @@ def save_processed_data(pflights_df, response):
     print('Final DataFrame stored as .csv under {}'.format(path))
 
 
+
+def get_data(collection, query_starting, query_landing):
+    df_starting = pd.DataFrame(list(collection.find(query_starting)))
+    df_landing = pd.DataFrame(list(collection.find(query_landing)))
+    df_landing = df_landing.drop(columns="_id")
+    df_starting = df_starting.drop(columns="_id")
+
+    return df_starting, df_landing
+
+
+
+def get_total_per_country(df_starting, df_landing):
+    #only keep one row per callsign (with the lowest altitude because closest to airport)
+    df_starting = df_starting.sort_values(by=['geo_altitude'],ascending=True).groupby('callsign',as_index=False).first()
+    df_landing = df_landing.sort_values(by=['geo_altitude'],ascending=True).groupby('callsign',as_index=False).first()
+
+    df_starting = df_starting.groupby('country_cc').agg({'avg_no_seats': 'sum'})
+    df_landing = df_landing.groupby('country_cc').agg({'avg_no_seats': 'sum'})
+   
+    sum_pass = df_landing.avg_no_seats.sub(df_starting['avg_no_seats'], fill_value = 0)
+    
+
+    return sum_pass
+
+
 if __name__ == "__main__":
 
     #Load data
