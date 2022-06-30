@@ -295,7 +295,7 @@ def save_processed_data(pflights_df, response):
 
 
 
-def get_data(collection, query_starting, query_landing):
+def get_mongo_data(collection, query_starting, query_landing):
     df_starting = pd.DataFrame(list(collection.find(query_starting)))
     df_landing = pd.DataFrame(list(collection.find(query_landing)))
     df_landing = df_landing.drop(columns="_id")
@@ -312,9 +312,9 @@ def get_total_per_country(df_starting, df_landing):
 
     df_starting = df_starting.groupby('country_cc').agg({'avg_no_seats': 'sum'})
     df_landing = df_landing.groupby('country_cc').agg({'avg_no_seats': 'sum'})
-   
+
     sum_pass = df_landing.avg_no_seats.sub(df_starting['avg_no_seats'], fill_value = 0)
-    
+
 
     return sum_pass
 

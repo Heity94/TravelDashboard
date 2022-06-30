@@ -5,7 +5,7 @@ import json
 from ast import literal_eval
 import datetime
 import pymongo
-from TravelDashboard.data import get_data, get_total_per_country
+from TravelDashboard.data import get_mongo_data, get_total_per_country
 
 
 client = pymongo.MongoClient()
@@ -45,7 +45,7 @@ if st.button('show me the map!'):
     "vertical_rate" : { "$lt" : -4},
     "time" : {"$gt" : epoch_start},
     "time" : {"$lt" : epoch_end}
-    }   
+    }
     query_starting = {
     "geo_altitude" : { "$lt" : 3000 },
     "vertical_rate" : { "$gt" : 4},
@@ -53,7 +53,7 @@ if st.button('show me the map!'):
     "time" : {"$lt" : epoch_end}
     }
 
-    starting, landing = get_data(collection=db.travel_data, query_starting=query_starting, query_landing=query_landing)
+    starting, landing = get_mongo_data(collection=db.travel_data, query_starting=query_starting, query_landing=query_landing)
     df = pd.DataFrame(get_total_per_country(df_starting = starting, df_landing= landing))
     df = df.reset_index()
     df.columns = ["country", "net_passengers"]
