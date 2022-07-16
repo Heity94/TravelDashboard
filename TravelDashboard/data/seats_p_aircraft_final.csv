@@ -1,0 +1,224 @@
+,model_no,avg_no_seats,manufacturer,model_no_stripped
+0,ATR 42,46,Aerospatiale & Avions de Transport Régional/ATR,ATR 4
+1,ATR 42-500,46,Aerospatiale & Avions de Transport Régional/ATR,ATR 42-5
+2,ATR 72,66,Aerospatiale & Avions de Transport Régional/ATR,ATR 7
+3,A220,132,Airbus,A220
+4,A220-100,120,Airbus,A220-1
+5,A220-300,144,Airbus,A220-3
+6,A300,281,Airbus,A300
+7,A300-B2/B4,281,Airbus,A300-B
+8,A300-600,281,Airbus,A300-6
+9,A310,212,Airbus,A310
+10,A310-200,212,Airbus,A310-2
+11,A310-300,212,Airbus,A310-3
+12,A318,112,Airbus,A318
+13,A319,133,Airbus,A319
+14,A320,164,Airbus,A320
+15,A320neo,164,Airbus,A320neo
+16,A321,201,Airbus,A321
+17,A321-100,201,Airbus,A321-1
+18,A321-200,201,Airbus,A321-2
+19,A321XLR,223,Airbus,A321
+20,A330-200,309,Airbus,A330-2
+21,A330-300,347,Airbus,A330-3
+22,A330-9,287,Airbus,A330-9
+23,A330-8,257,Airbus,A330-8
+24,A340-200,290,Airbus,A340-2
+25,A340-300,315,Airbus,A340-3
+26,A340-500,350,Airbus,A340-5
+27,A340-600,433,Airbus,A340-6
+28,A350XWB,288,Airbus,A350
+29,A350-800,288,Airbus,A350-8
+30,A350-900,288,Airbus,A350-9
+31,A350-900ULR,288,Airbus,A350-9
+32,A350-1000,288,Airbus,A350-1
+33,A380-800,492,Airbus,A380-8
+34,A380-900,492,Airbus,A380-9
+35,AN-74TK,52,Antonov,AN-7
+36,AN-148,68,Antonov,AN-1
+37,AN-158,99,Antonov,AN-1
+38,1900C,19,Beechcraft,1900
+39,1900D,19,Beechcraft,1900
+40,707,176,Boeing,707
+41,707-100,176,Boeing,707-1
+42,707-300,176,Boeing,707-3
+43,707-400,176,Boeing,707-4
+44,720-020,176,Boeing,720-0
+45,717,112,Boeing,717
+46,727,160,Boeing,727
+47,727-100,160,Boeing,727-1
+48,727-200,160,Boeing,727-2
+49,737-100,85,Boeing,737-1
+50,737-200,112,Boeing,737-2
+51,737-300,139,Boeing,737-3
+52,737-400,158,Boeing,737-4
+53,737-500,121,Boeing,737-5
+54,737-600,121,Boeing,737-6
+55,737-700,138,Boeing,737-7
+56,737-800,176,Boeing,737-8
+57,737-900,183,Boeing,737-9
+58,737-900ER,215,Boeing,737-9
+59,747-100,442,Boeing,747-1
+60,747-100B,442,Boeing,747-1
+61,747-100SR,442,Boeing,747-1
+62,747-200,407,Boeing,747-2
+63,747-200F,407,Boeing,747-2
+64,747-200C,407,Boeing,747-2
+65,747-200M,407,Boeing,747-2
+66,747,290,Boeing,747
+67,747-300,421,Boeing,747-3
+68,747-400,435,Boeing,747-4
+69,747-400ER,433,Boeing,747-4
+70,747-8,259,Boeing,747-8
+71,747-8F,259,Boeing,747-8
+72,747-8I,259,Boeing,747-8
+73,757,228,Boeing,757
+74,757-200,228,Boeing,757-2
+75,757-200PF,228,Boeing,757-2
+76,757-200M,228,Boeing,757-2
+77,757-200ER,228,Boeing,757-2
+78,757-300,228,Boeing,757-3
+79,767,246,Boeing,767
+80,767-200,246,Boeing,767-2
+81,767-200ER,246,Boeing,767-2
+82,767-300ER,246,Boeing,767-3
+83,767-400ER,246,Boeing,767-4
+84,777,486,Boeing,777
+85,777-200,486,Boeing,777-2
+86,777-200ER,486,Boeing,777-2
+87,777-200LR,486,Boeing,777-2
+88,777-300,486,Boeing,777-3
+89,777-300ER,486,Boeing,777-3
+90,777-X,486,Boeing,777-X
+91,777-8,486,Boeing,777-8
+92,777-9,486,Boeing,777-9
+93,787-3,253,Boeing,787-3
+94,787-8,312,Boeing,787-8
+95,787-9,341,Boeing,787-9
+96,787-10,403,Boeing,787-1
+97,BAC 1-11,79,British Aerospace / BAC,BAC 1
+98,BAE,93,British Aerospace / BAC,BAE
+99,146,93,British Aerospace / BAC,146
+100,Jetstream,48,British Aerospace / BAC,Jets
+101,Concorde,100,BAE/Aerospatiale,Conc
+102,Xiangfeng,70,AVIC I/China Aviation Industry I,Xian
+103,Comac 919,162,Commercial Aircraft Corp of China/Comac,Comac 9
+104,CV-240,56,Convair,CV-2
+105,CV-340,56,Convair,CV-3
+106,CV-440,56,Convair,CV-4
+107,CV-880,99,Convair,CV-8
+108,CV-990,108,Convair,CV-9
+109,Comet,78,de Havilland,Come
+110,Comet 1,78,de Havilland,Comet 1
+111,Comet 1A,78,de Havilland,Comet 1
+112,Comet 2,78,de Havilland,Comet 2
+113,Comet 3,78,de Havilland,Comet 3
+114,Comet 4,78,de Havilland,Comet 4
+115,Comet 4B,78,de Havilland,Comet 4
+116,Comet 4C,78,de Havilland,Comet 4
+117,Early Comets,78,de Havilland,Early C
+118,Dash 7,50,de Havilland Canada,Dash 7
+119,Dash 8,37,de Havilland Canada,Dash 8
+120,Series 100,37,de Havilland Canada,Series 1
+121,Q-200,37,de Havilland Canada,Q-200
+122,Q-300,54,de Havilland Canada,Q-300
+123,Q-400,70,de Havilland Canada,Q-400
+124,DHC6 Twin,19,de Havilland Canada,DHC6 T
+125,CS100,70,de Havilland Canada,CS10
+126,Airbus A220,165,de Havilland Canada,Airbus A
+127,CS130,95,de Havilland Canada,CS13
+128,CS500,160,de Havilland Canada,CS50
+129,CRJ100,50,Canadair,CRJ100
+130,CRJ200,50,Canadair,CRJ200
+131,CRJ200ER,50,Canadair,CRJ200
+132,CRJ200LR,50,Canadair,CRJ200
+133,CRJ700,75,Canadair,CRJ700
+134,CRJ705,75,Canadair,CRJ705
+135,CRJ900,86,Canadair,CRJ900
+136,ERJ-120 Brasilia,30,Embraer,ERJ-120 Brasilia
+137,ERJ-135,37,Embraer,ERJ-135
+138,ERJ-145,50,Embraer,ERJ-145
+139,ERJ-170,66,Embraer,ERJ-170
+140,ERJ-175,78,Embraer,ERJ-175
+141,ERJ-190,102,Embraer,ERJ-190
+142,ERJ-195,111,Embraer,ERJ-195
+143,Metroliner,19,Fairchild,Metr
+144,F27 Friendship,40,Fokker,F27 F
+145,F28 Fellowship,85,Fokker,F28 F
+146,F50,50,Fokker,F50
+147,F70,67,Fokker,F70
+148,F100,114,Fokker,F100
+149,IL-62,126,Ilyushin,IL-6
+150,IL-86,330,Ilyushin,IL-8
+151,IL-96,313,Ilyushin,IL-9
+152,IL96-300,313,Ilyushin,IL96-3
+153,IL96M,313,Ilyushin,IL96
+154,IL96-400,313,Ilyushin,IL96-4
+155,IL-114,64,Ilyushin,IL-1
+156,IL-114T,64,Ilyushin,IL-1
+157,IL-114P,64,Ilyushin,IL-1
+158,IL-114FK,64,Ilyushin,IL-1
+159,MS-21,177,Irkut,MS-2
+160,MC-21-300,177,Irkut,MC-21-3
+161,MC-21-200,177,Irkut,MC-21-2
+162,MC21-100,177,Irkut,MC21-1
+163,L49 Constellation,71,Lockheed,L49 C
+164,C-69,71,Lockheed,C-6
+165,L1049,71,Lockheed,L104
+166,L1649A,71,Lockheed,L164
+167,L188 Electra,82,Lockheed,L188 E
+168,L1011,267,Lockheed,L101
+169,L1011-100,267,Lockheed,L1011-1
+170,L1011-200,267,Lockheed,L1011-2
+171,L1011-250,267,Lockheed,L1011-2
+172,L1011-500,267,Lockheed,L1011-5
+173,Lockheed,267,Lockheed,Lock
+174,DC-3,21,McDonnell Douglas,DC-3
+175,C-47,21,McDonnell Douglas,C-4
+176,R4D Navy,21,McDonnell Douglas,R4D N
+177,DC-6,67,McDonnell Douglas,DC-6
+178,C-118,67,McDonnell Douglas,C-1
+179,DC-7,104,McDonnell Douglas,DC-7
+180,DC-7B,104,McDonnell Douglas,DC-7
+181,DC-7C,104,McDonnell Douglas,DC-7
+182,DC-7F,104,McDonnell Douglas,DC-7
+183,DC8,258,McDonnell Douglas,DC8
+184,DC9-10,84,McDonnell Douglas,DC9-1
+185,DC9-20,84,McDonnell Douglas,DC9-2
+186,DC9-30,108,McDonnell Douglas,DC9-3
+187,DC9-40,118,McDonnell Douglas,DC9-4
+188,DC9-50,130,McDonnell Douglas,DC9-5
+189,DC10,275,McDonnell Douglas,DC10
+190,DC10-10,275,McDonnell Douglas,DC10-1
+191,DC10-15,275,McDonnell Douglas,DC10-1
+192,DC10-30,275,McDonnell Douglas,DC10-3
+193,DC10-40,275,McDonnell Douglas,DC10-4
+194,MD81,157,McDonnell Douglas,MD81
+195,MD82,157,McDonnell Douglas,MD82
+196,MD83,157,McDonnell Douglas,MD83
+197,MD87,123,McDonnell Douglas,MD87
+198,MD88,157,McDonnell Douglas,MD88
+199,MD90,166,McDonnell Douglas,MD90
+200,MD11,307,McDonnell Douglas,MD11
+201,MD11ER,307,McDonnell Douglas,MD11
+202,MRJ,75,Mitsubishi,MRJ
+203,MRJ70,75,Mitsubishi,MRJ7
+204,MRJ90,75,Mitsubishi,MRJ9
+205,MRJ100,75,Mitsubishi,MRJ1
+206,Saab,30,Saab,Saab
+207,340B,30,Saab,340B
+208,340B,30,Saab,340 B
+209,Saab 2000,50,Saab,Saab 2
+210,Caravelle,108,Sud Aviation,Cara
+211,Superjet 100,98,Sukhoi,Superjet 1
+212,Superjet 130,132,Sukhoi,Superjet 1
+213,TU-134,93,Tupolev,TU-1
+214,TU-144,140,Tupolev,TU-1
+215,TU-154,158,Tupolev,TU-1
+216,TU-204,202,Tupolev,TU-2
+217,TU-214,202,Tupolev,TU-2
+218,TU-334,114,Tupolev,TU-3
+219,Viscount,62,Vickers,Visc
+220,Vanguard,124,Vickers,Vang
+221,VC-10,133,Vickers,VC-1
+222,Yak-42,105,Yakovlev,Yak-4

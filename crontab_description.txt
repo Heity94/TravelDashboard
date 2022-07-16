@@ -3,7 +3,8 @@ Set up crontab:
 see all crontab: crontab -l
 edit cronjob: crontab -e
 
-create crontab command: https://www.bennetrichter.de/tools/crontab-generator/
-
 our crontab command:
- */2 * * * * /home/jonas_pieper/my_env/bin/python /home/jonas_pieper/project/api_call/call_api.py > /dev/null 2>&1
+ */2 * * * * /home/philipp_heitmann/test/bin/python /home/philipp_heitmann/TravelDashboard/scripts/TravelDashboard-run > /dev/null 2>&1
+
+# for privae machine from Prof. schaal
+*/2 * * * * /home/heitmann/bigdata/bin/python /home/heitmann/scripts/TravelDashboard-run > /dev/null 2>&1

@@ -4,6 +4,12 @@ import reverse_geocoder
 import requests
 import os
 
+import pandas as pd
+import numpy as np
+import reverse_geocoder
+import requests
+import os
+
 def get_data():
 
     print("Load local databases ...")
@@ -36,7 +42,7 @@ def get_data():
     ]
 
     # Create Dataframe
-    flights = pd.DataFrame(response["states"], columns=col_names)
+    flights = pd.DataFrame(response["states"])#, columns=col_names)
 
     print("Number of columns received from API:", flights.shape[1])
 
@@ -49,7 +55,7 @@ def get_data():
         "position_source", "drop"
         ], inplace=True)  # drop columns
     else:
-        flights.columns=col_names = [
+        flights.columns= [
         'icao24', 'callsign', 'origin_country', 'time_position',
         'last_contact', 'long', 'lat', 'baro_altitude', 'on_ground',
         'velocity', 'true_track', 'vertical_rate', 'sensors', 'geo_altitude',
@@ -287,14 +293,14 @@ def save_processed_data(pflights_df, response):
     #Set path to store data
     path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "raw_data",
                         "preproc_data", "{}.csv".format(response['time']))
-    #path = "raw_data/preproc_data_test/"
+    #path = "raw_data/preproc_data/"
 
     # Store preprocessed DataFrame to csv
     pflights_df.to_csv(path)
     print('Final DataFrame stored as .csv under {}'.format(path))
 
 
-
+### Functions to query MongoDB directly (in case Spark would not have worked)
 def get_mongo_data(collection, query_starting, query_landing):
     df_starting = pd.DataFrame(list(collection.find(query_starting)))
     df_landing = pd.DataFrame(list(collection.find(query_landing)))
@@ -303,18 +309,20 @@ def get_mongo_data(collection, query_starting, query_landing):
 
     return df_starting, df_landing
 
-
-
+### Function to identify starting and landing airplanes and aggregate per country (in case Spark would not have worked)
 def get_total_per_country(df_starting, df_landing):
+    df_starting['dtime'] = pd.to_datetime(df_starting['time'], unit='s')
+    df_landing['dtime'] = pd.to_datetime(df_landing['time'], unit='s')
+
     #only keep one row per callsign (with the lowest altitude because closest to airport)
-    df_starting = df_starting.sort_values(by=['geo_altitude'],ascending=True).groupby('callsign',as_index=False).first()
-    df_landing = df_landing.sort_values(by=['geo_altitude'],ascending=True).groupby('callsign',as_index=False).first()
+    df_starting = df_starting.sort_values(by=['geo_altitude'],ascending=True).groupby([(pd.Grouper(key = 'dtime', freq='2H')), 'callsign']).first()
+    df_landing = df_landing.sort_values(by=['geo_altitude'],ascending=True).groupby([(pd.Grouper(key = 'dtime', freq='2H')), 'callsign']).first()
+
 
     df_starting = df_starting.groupby('country_cc').agg({'avg_no_seats': 'sum'})
     df_landing = df_landing.groupby('country_cc').agg({'avg_no_seats': 'sum'})
 
     sum_pass = df_landing.avg_no_seats.sub(df_starting['avg_no_seats'], fill_value = 0)
-
 
     return sum_pass
 
