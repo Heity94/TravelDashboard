@@ -291,8 +291,8 @@ def preproc_flight_data(flights_df, opensky_DB, seat_data, aircraftregister_US):
 def save_processed_data(pflights_df, response):
 
     #Set path to store data
-    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "raw_data",
-                        "preproc_data", "{}.csv".format(response['time']))
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data",
+                        "csv_data", "{}.csv".format(response['time']))
     #path = "raw_data/preproc_data/"
 
     # Store preprocessed DataFrame to csv
